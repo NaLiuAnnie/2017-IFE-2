@@ -1,0 +1,27 @@
+button {
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 2px #888;
+    background-color: #fff;
+}
+
+#left-out {
+     margin-left: 50px;
+}
+
+#queue {
+    margin-top: 10px;
+    display: flex;
+}
+
+.box {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: #ea1515;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
