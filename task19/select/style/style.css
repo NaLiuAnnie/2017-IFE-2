@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+}
+
+header {
+    width: 100%;
+    height: 340px;
+}
+
+nav {
+    width: 100%;
+    height: 80px;
+    background-color: #000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+}
+
+.nav li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 130px;
+    height: 100%;
+    font-size: 16px;
+    list-style-type: none;
+}
+
+i {
+    display: block;
+    background-image: url("../images/icon.png");
+    background-color: #000;
+}
+
+.nav-dricon {
+    width: 16px;
+    height: 13px;
+    margin-left: 10px;
+}
+
+.banner {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background-color: #2d7079;
+}
+
+.banner-l {
+    position: absolute;
+    right: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 480px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.banner-sm {
+    font-size: 32px;
+    opacity: .5;
+}
+
+.banner-lg {
+    font-size: 44px;
+}
+
+.banner-l-icon {
+    width: 77px;
+    height: 260px;
+    background-position: 0 -13px;
+}
+
+.banner-r {
+    position: absolute;
+    left: 50%;
+    width: 720px;
+    height: 260px;
+    overflow: hidden;
+}
+
+main {
+    width: 960px;
+    margin: 20px auto 60px auto;
+}
+
+.something {
+    display: flex; 
+    width: 100%;
+    height: 240px;
+    margin-bottom: 20px; 
+}
+
+.some-item {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.some-item h2 {
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.some-item h4 {
+    font-size: 24px;
+    font-weight: 500;
+    opacity: .5;
+}
+
+.some-item p {
+    line-height: 35px;
+}
+
+.one,
+.two {
+    margin-right: 15px;
+}
+
+.one-icon {
+    width: 80px;
+    height: 86px;
+    background-position: 0 -273px;
+}
+
+.two-icon {
+    width: 80px;
+    height: 80px;
+    background-position: 0 -359px;
+}
+
+.three-icon {
+    width: 80px;
+    height: 80px;
+    background-position: 0 -439px;
+}
+
+.bigbanner {
+    position: relative;
+    width: 100%;
+    height: 193px;
+    margin-bottom: 15px;
+}
+
+.bigbanner img {
+    width: 960px;
+    height: 180px;
+}
+
+.bigbanner p {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 16px;
+}
+
+.ban-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.ban-checked-icon {
+    margin-left: 10px;
+    width: 60px;
+    height: 3px;
+    background-position: 0 -519px;
+}
+
+.ban-unchecked-icon {
+    margin-left: 10px;
+    width: 60px;
+    height: 3px;
+    background-position: 0 -522px;
+}
+
+.tab {
+    margin-bottom: 50px;
+}
+
+.tab-title {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-title p {
+    flex: 1;
+    text-align: center;
+    border-bottom: 2px solid #9a9a9a;
+    padding: 15px 0;
+    font-size: 24px;
+}
+
+.tab-title p:nth-child(2) {
+    border: 2px solid #9a9a9a;
+    border-bottom: none;
+}
+
+.tab > p {
+    font-size: 18px;
+    font-weight: 900;
+    margin-top: 50px;
+}
+
+.table {
+    display: flex;
+    flex-flow: row wrap;
+    border-top: 2px solid #aaa;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+.table span,
+.table p {
+    display: flex;
+    flex: 1 0 18%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-flow: row wrap;
+    height: 60px;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 0 30px;
+}
+
+.green-cell {
+    color: #417505;
+}
+
+.blue-cell {
+    color: #4a90e2;
+}
+
+.red-cell {
+    color: #d0021b;
+}
+
+.dark-cell {
+    background-color: #eee;
+}
+
+.em-cell {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.custominfo {
+    width: 100%;
+    height: 220px;
+    display: flex;
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+    background: linear-gradient(left, #6f839f, #fff);
+    background: -webkit-linear-gradient(left, #6f839f, #fff);
+    padding: 40px 80px 10px 80px;
+}
+
+.form > div {
+    display: flex;
+    align-items: center;
+    width: 206px;
+    height: 34px;
+    position: relative;
+    border: 1px solid #999;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #cdcdcd;
+    padding-left: 20px;
+    background-color: #fff;
+}
+
+.sel-icon {
+    width: 19px;
+    height: 14px;
+    background-position: 0 -528px;
+    position: absolute;
+    right: 20px;
+    top: 13px;
+}
+
+.sel-country {
+    overflow: visible;
+    position: relative;
+}
+
+.country-option,
+.city-option {
+    visibility: hidden;
+    position: absolute;
+    left: -1px;
+    top: 34px;
+    display: flex;
+    flex-flow: column;
+    width: 226px;
+    height: 150px;
+    border:  1px solid #999;
+    z-index: 999;
+    color: #000;
+    background-color: #fff;
+}
+
+.city-option div{
+    line-height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.country-option div {
+    line-height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.country-option div:hover {
+    background-color: #eee;
+    background-clip ： border-box; 
+}
+
+.city-option div:hover {
+    background-color: #eee;
+    background-clip ： border-box; 
+}
+
+.shakehand {
+    flex: 1;
+    width: 420px;
+    height: 220px;
+}
+
+.submit {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: linear-gradient(top, #fff, #5194e3);
+    background: -webkit-linear-gradient(top, #fff, #5194e3);
+    color: #fff;
+    margin-bottom: 15px; 
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+}
+
+sup {
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
+    font-size: 75%;
+    line-height: 0;
+}
