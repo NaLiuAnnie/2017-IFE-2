@@ -142,6 +142,7 @@ main {
 
 .l-nav {
     width: 230px;
+    max-height: 748px;
     font-size: 14px;
     overflow:scroll;
     background-color: #eee;
@@ -154,37 +155,32 @@ main {
 
 .r-table {
     width: 710px;
-    display: flex;
-    flex-flow: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-collapse:collapse;
+    border: 1px solid #e6e6e6;
     font-size: 14px;
+    line-height: 30px;
+}
+
+.r-table td,
+.r-table th{
+    border: 1px solid #e6e6e6;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .table-r {
-    display: flex;
-    flex-flow: row;
     width: 710px;
 }
 
 #table-h {
-    position: absolute;
-    top: 0px;
-    display: flex;
-    justify-content: center;
+    top: 0;
+    margin-left: -1;
 }
 
-
-
-.table-r p {
-    flex: 1;
-    border: 1px solid #e6e6e6;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tab-h {
+th {
     background-color: #ddd;
 }
 
@@ -192,7 +188,7 @@ main {
     background-color: #efefef;
 }
 
-.table-r button {
+.r-table button {
     width: 50px;
     border-radius: 5px;
     border: 1px solid #e8e8e8;
