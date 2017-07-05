@@ -8,6 +8,7 @@ html,
 body {
     height: 100%;
     width: 100%;
+    overflow: scroll;
 }
 
 header {
@@ -220,7 +221,6 @@ th {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    overflow: hidden;
 }
 
 #delete-table,
