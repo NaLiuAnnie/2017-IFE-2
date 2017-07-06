@@ -22,7 +22,7 @@
 
   function startup() {
     video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
+    canvas = document.getElementsByClassName('canvas');
     photo = document.getElementsByClassName('photo');
     startbutton = document.getElementById('startbutton');
 
@@ -63,8 +63,8 @@
       
         video.setAttribute('width', width);
         video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
+        canvas[num].setAttribute('width', width);
+        canvas[num].setAttribute('height', height);
         streaming = true;
       }
     }, false);
@@ -82,11 +82,11 @@
   // captured.
 
   function clearphoto() {
-    var context = canvas.getContext('2d');
+    var context = canvas[num].getContext('2d');
     context.fillStyle = "#AAA";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillRect(0, 0, canvas[num].width, canvas[num].height);
 
-    var data = canvas.toDataURL('image/png');
+    var data = canvas[num].toDataURL('image/png');
     photo[num].setAttribute('src', data);
   }
   
@@ -97,18 +97,18 @@
   // other changes before drawing it.
 
   function takepicture() {
-    var context = canvas.getContext('2d');
-    if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
-    
-      var data = canvas.toDataURL('image/png');
       if(num == 5) {
         num = 0;
       }else {
         num++;
       }
+    var context = canvas[num].getContext('2d');
+    if (width && height) {
+      canvas[num].width = width;
+      canvas[num].height = height;
+      context.drawImage(video, 0, 0, width, height);
+    
+      var data = canvas[num].toDataURL('image/png');
       photo[num].setAttribute('src', data);
     } else {
       clearphoto();
