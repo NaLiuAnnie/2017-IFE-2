@@ -74,7 +74,7 @@
       ev.preventDefault();
     }, false);
     
-    setInterval(takepicture, 500);
+    setInterval(takepicture, 1000);
 
   }
 
