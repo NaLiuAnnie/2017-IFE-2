@@ -68,7 +68,7 @@
       }
     }, false);
 
-    startbutton.addEventListener('click', function(ev){
+    startbutton.addEventListener('touchstart', function(ev){
       takepicture();
       ev.preventDefault();
     }, false);
