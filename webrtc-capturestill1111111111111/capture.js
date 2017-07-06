@@ -21,7 +21,7 @@
 
   function startup() {
     video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
+    canvas = document.getElementsByClassName('canvas');
     photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
 
@@ -97,16 +97,18 @@
   // other changes before drawing it.
 
   function takepicture() {
-    var context = canvas.getContext('2d');
+    for(var i = 0; i < canvas.length; i++) {
+    var context = canvas[i].getContext('2d');
     if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
+      canvas[i].width = width;
+      canvas[i].height = height;
       context.drawImage(video, 0, 0, width, height);
     
-      var data = canvas.toDataURL('image/png');
+      var data = canvas[i].toDataURL('image/png');
       photo.setAttribute('src', data);
     } else {
       clearphoto();
+    }
     }
   }
 
