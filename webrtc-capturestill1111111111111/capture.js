@@ -15,14 +15,12 @@
   // will be set by the startup() function.
 
   var video = null;
-  var canvas = null;
-  var photo = null;
+  var canvas = document.getElementsByClassName('canvas');
+  var photo = document.getElementsByClassName('photo');;
   var startbutton = null;
 
   function startup() {
     video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
-    photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
 
     navigator.getMedia = ( navigator.getUserMedia ||
@@ -62,8 +60,10 @@
       
         video.setAttribute('width', width);
         video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
+        for(var i = 0; i < canvas.length; i++) {
+        canvas[i].setAttribute('width', width);
+        canvas[i].setAttribute('height', height);
+        }
         streaming = true;
       }
     }, false);
@@ -81,13 +81,15 @@
   // Fill the photo with an indication that none has been
   // captured.
 
-  function clearphoto() {
-    var context = canvas.getContext('2d');
+  function clearphoto(i) {
+    if(typeof i == 'number') {
+    var context = canvas[i].getContext('2d');
     context.fillStyle = "#AAA";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillRect(0, 0, canvas[i].width, canvas[i].height);
 
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
+    var data = canvas[i].toDataURL('image/png');
+    photo[i].setAttribute('src', data);
+    }
   }
   
   // Capture a photo by fetching the current contents of the video
@@ -97,16 +99,18 @@
   // other changes before drawing it.
 
   function takepicture() {
-    var context = canvas.getContext('2d');
+    for(var i = 0; i < canvas.length; i++) {
+    var context = canvas[i].getContext('2d');
     if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
+      canvas[i].width = width;
+      canvas[i].height = height;
       context.drawImage(video, 0, 0, width, height);
     
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
+      var data = canvas[i].toDataURL('image/png');
+      photo[i].setAttribute('src', data);
     } else {
-      clearphoto();
+      clearphoto(i);
+    }
     }
   }
 
