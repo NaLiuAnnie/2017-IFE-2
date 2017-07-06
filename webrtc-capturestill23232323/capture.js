@@ -86,7 +86,7 @@
     context.fillStyle = "#AAA";
     context.fillRect(0, 0, canvas[num].width, canvas[num].height);
 
-    var data = canvas[num].toDataURL('image/png');
+    var data = canvas[num].toDataURL('image/jpeg');
     photo[num].setAttribute('src', data);
   }
   
