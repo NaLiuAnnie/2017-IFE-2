@@ -97,7 +97,7 @@
   // other changes before drawing it.
 
   function takepicture() {
-      if(num == 5) {
+      if(num == 6) {
         num = 0;
       }else {
         num++;
