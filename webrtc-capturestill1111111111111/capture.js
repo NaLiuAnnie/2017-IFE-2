@@ -74,7 +74,7 @@
     }, false);
     
 
-    setInterval(takepicture, 100);
+    setInterval(takepicture, 500);
     clearphoto();
   }
 
