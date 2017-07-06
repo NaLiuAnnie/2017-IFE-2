@@ -73,6 +73,8 @@
       ev.preventDefault();
     }, false);
     
+
+    setInterval(function(){takepicture();}, 10000);
     clearphoto();
   }
 
