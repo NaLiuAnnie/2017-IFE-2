@@ -56,7 +56,7 @@
         context.drawImage(video, 0, 0);    
 
         var img = document.getElementById("img");  
-        img.src = canvas.toDataURL("image/png");         
+        img.setAttribute('src', canvas.toDataURL());         
     }
 
     drawImage();
