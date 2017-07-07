@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <video></video>
+
+    <script>
+    var p = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+
+    p.then(function(mediaStream) {
+        var video = document.querySelector('video');
+        video.src = window.URL.createObjectURL(mediaStream);
+        video.onloadedmetadata = function(e) {
+          // Do something with the video here.
+        };
+    });
+
+    p.catch(function(err) { console.log(err.name); }); // always check for errors at the end.
+    </script>
+</body>
+</html>
