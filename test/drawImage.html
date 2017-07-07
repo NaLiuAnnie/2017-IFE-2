@@ -53,13 +53,10 @@
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         var video = document.getElementById('video');
-        context.drawImage(video, 0, 0);    
-
-        var img = document.getElementById("img");  
-        img.setAttribute('src', canvas.toDataURL());         
+        context.drawImage(video, 0, 0);           
     }
 
-    drawImage();
+    setInterval(drawImage, 1000);
     </script>
 </body>
 </html>
