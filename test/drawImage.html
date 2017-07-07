@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #video {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width:320px;
+            height:240px;
+        }
+        #canvas {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width:320px;
+            height:240px;           
+        }
+        #img{
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width:320px;
+            height:240px;  
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay="autoplay"></video>
+    <canvas id="canvas"></canvas>
+    <img id="img">
+    <script>
+
+    navigator.getUserMedia = navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia;
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({ audio: false, video: true },
+        function(stream) {
+            var video = document.querySelector('video');
+            video.srcObject = stream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+        };
+    },
+    function(err) {
+        console.log("The following error occurred: " + err.name);
+    }
+    );
+    }else {
+   console.log("getUserMedia not supported");
+    }
+
+    function drawImage() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+        context.drawImage(video, 0, 0);    
+
+        var img = document.getElementById("img");  
+        img.src = canvas.toDataURL("image/png");         
+    }
+
+    drawImage();
+    </script>
+</body>
+</html>
