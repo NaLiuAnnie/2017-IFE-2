@@ -14,6 +14,7 @@
     <video id="video" autoplay="autoplay" muted></video>
 
     <script>
+    var mediaStream = null;
     navigator.getUserMedia = navigator.getUserMedia ||
                              navigator.webkitGetUserMedia ||
                              navigator.mozGetUserMedia;
@@ -23,6 +24,7 @@
         function(stream) {
             var video = document.querySelector('video');
             video.srcObject = stream;
+            mediaStream = stream;
             video.onloadedmetadata = function(e) {
                 video.play();
         };
@@ -34,6 +36,12 @@
     }else {
    console.log("getUserMedia not supported");
     }
+
+    function viewStream () {
+        console(mediaStream);
+    }
+
+    setInterval(viewStream, 500);
     </script>
 </body>
 </html>
