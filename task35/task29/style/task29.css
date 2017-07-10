@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft Yahei";
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+header {
+  height: 340px;
+  width: 100%;
+}
+header nav {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  background-color: #000;
+}
+header nav .nav-content {
+  width: 960px;
+  height: 80px;
+  position: relative;
+}
+header nav .nav-content .logo {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+}
+header nav .nav-content .nav-r {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+header nav .nav-content .nav-r div {
+  width: 130px;
+  height: 80px;
+  position: relative;
+}
+header nav .nav-content .nav-r div p {
+  width: 130px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+header nav .nav-content .nav-r div .sub-nav {
+  list-style-type: none;
+  display: none;
+}
+header nav .nav-content .nav-r div .sub-nav li {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+header nav .nav-content .nav-r div .nav-icon {
+  position: absolute;
+  display: inline-block;
+  background-image: url("../images/icon.png");
+  width: 16px;
+  height: 9px;
+  right: 0px;
+  top: 40px;
+}
+header nav .nav-content .nav-r div:hover {
+  background-color: #ffffff;
+}
+header nav .nav-content .nav-r div:hover ul {
+  display: block;
+}
+header .banner {
+  width: 100%;
+  height: 260px;
+  background-color: #2d7079;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+header .banner .banner-l {
+  width: 50%;
+  height: 260px;
+  position: relative;
+}
+header .banner .banner-l .banner-l-content {
+  width: 480px;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+header .banner .banner-l .banner-l-content .banner-l-icon {
+  display: inline-block;
+  background-image: url("../images/icon.png");
+  width: 780px;
+  height: 260px;
+  right: 0px;
+  top: -9px;
+}
+header .banner .banner-l .banner-l-content .banner-l-p {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+header .banner .banner-l .banner-l-content .banner-l-p .sm-p {
+  font-size: 32px;
+  color: #fff;
+  opacity: .5;
+}
+header .banner .banner-l .banner-l-content .banner-l-p .bg-p {
+  font-size: 44px;
+  color: #fff;
+}
+header .banner .banner-r {
+  width: 50%;
+  height: 260px;
+}
+main {
+  width: 960px;
+  margin: 20px auto 20px auto;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  position: relative;
+  color: #808080;
+}
+main .l-nav {
+  width: 230px;
+  max-height: 748px;
+  font-size: 14px;
+  overflow: scroll;
+  background-color: #eee;
+}
+main .l-nav .l-l2-nav {
+  padding-left: 20px;
+  background-color: #fff;
+}
+main .l-nav p {
+  margin: 5px 0;
+  text-align: center;
+}
+main .r-table {
+  width: 710px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-collapse: collapse;
+  border: 1px solid #e6e6e6;
+  font-size: 14px;
+  line-height: 30px;
+}
+main .r-table td {
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  vertical-align: middle;
+}
+main .r-table th {
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #ddd;
+}
+main .r-table #table-h {
+  top: 0;
+  margin-left: -1;
+}
+main .r-table .dark-r {
+  background-color: #efefef;
+}
+main .r-table button {
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  margin-left: 10px;
+  color: #808080;
+}
+.mask {
+  display: none;
+  position: absolute;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.mask form {
+  width: 30%;
+  height: 30%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  background-color: #fff;
+  opacity: 1;
+}
+.mask form .form-content {
+  position: relative;
+}
+.mask form .form-content input {
+  position: absolute;
+  left: 40%;
+  width: 200px;
+}
+.mask form .form-content span {
+  position: relative;
+  left: 100px;
+}
+.mask form .form-content span:nth-of-type(2) {
+  display: inline-block;
+  margin-top: 10px;
+}
+.mask form .form-content span :nth-of-type(3) {
+  display: inline-block;
+  margin-top: 10px;
+}
+#delete-table,
+#edit-table {
+  display: none;
+}
+.mask > form > p {
+  left: 100px;
+}
+#newValue {
+  margin-top: 10px;
+}
+#newContent {
+  margin-top: 10px;
+}
+.form-btn {
+  display: flex;
+  justify-content: center;
+}
+.form-btn button {
+  width: 90px;
+  height: 40px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: 1px solid #999;
+}
+.banber-l-icon {
+  display: inline-block;
+  background-image: url("../images/icon.png");
+  width: 78px;
+  height: 260px;
+  right: 0px;
+  top: -9px;
+  background-position: 0 -9px;
+}
+
+/*# sourceMappingURL=task29.css.map */

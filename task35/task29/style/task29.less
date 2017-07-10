@@ -1,0 +1,271 @@
+@header-height: 340px; 
+@header-width: 100%;
+@top-nav-height: 80px;
+@top-nav-width: 100%;
+@top-nav-backgroundColor: #000;
+@logo-left: 0px;
+@logo-top: 15px;
+@white-color: #fff;
+@nav-r-width: 130px;
+@banner-color: #2d7079;
+
+@main-width: 960px;
+@main-char-color: #808080;
+@main-l-nav-width: 230px;
+
+.flex-display (@direct: row, @justify: center) {
+	display: flex;
+	flex-flow: @direct;
+	justify-content: @justify;
+}
+
+
+.icon (@width: 0px, @height: 0px, @right: 0px, @top: 0px) {
+	display: inline-block;
+    background-image: url("../images/icon.png");
+    width: @width;
+    height: @height;
+    right: @right;
+    top: @top;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+header {
+    height: @header-height;
+    width: @header-width;
+    nav {
+        height: @top-nav-height;
+        width: @top-nav-width;
+        .flex-display(row, center);
+        background-color: @top-nav-backgroundColor;
+        .nav-content {
+            width: 	@main-width;
+            height: @top-nav-height;
+            position: relative;
+            .logo {
+            	position: absolute;
+            	left: @logo-left;
+            	top: @logo-top;
+            }
+            .nav-r {
+                position: absolute;
+                top: 0;
+                right: 0;
+                color: @white-color;
+                .flex-display;
+                div {
+                    width: @nav-r-width;
+                    height: @top-nav-height;
+                    position: relative;
+                    p {
+                        width: @nav-r-width;
+                        height: @top-nav-height;
+                        line-height: @top-nav-height;
+                        text-align: center;
+                    }
+                    .sub-nav {
+                        list-style-type: none;
+                        display: none;
+                        li {
+                            text-align: center;
+                            margin-top: 5px;
+                            margin-bottom: 5px;
+                        }
+                    }
+                    .nav-icon {
+                    	position: absolute;
+                        .icon (16px, 9px, 0px, 40px);
+                    }
+                    &:hover {
+                        background-color:  @top-nav-backgroundColor + 333;
+                        ul {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .banner {
+        width:  @header-width;
+        height: @header-height - @top-nav-height;
+        background-color: @banner-color;
+        .flex-display;  
+        .banner-l {
+            width: 	@header-width / 2;
+            height: @header-height - @top-nav-height;
+            position: relative;
+            .banner-l-content {
+                width: 	@main-width / 2;
+                position: absolute;
+                right: 0;
+                .flex-display (row, space-between);
+                .banner-l-icon {
+                    .icon (780px, 260px, 0px, -9px);
+                }
+                .banner-l-p {
+                    .flex-display (column, center);
+                    .sm-p {
+                        font-size: 32px;
+                        color: @white-color;
+                        opacity: .5;
+                    }
+                    .bg-p {
+                        font-size: 44px;
+                        color: @white-color;
+                    }
+                }
+            }
+        }
+        .banner-r {
+            width: 	@header-width / 2;
+            height: @header-height - @top-nav-height;
+        }
+    }
+}
+
+main {
+    width: 	@main-width;
+    margin: 20px auto 20px auto;
+    .flex-display (row, space-between);
+    position: relative;
+    color: @main-char-color;
+    .l-nav {
+        width: 	@main-l-nav-width;
+        max-height: 748px;
+        font-size: 14px;
+        overflow: scroll;
+        background-color: #eee;
+        .l-l2-nav {
+            padding-left: 20px;
+            background-color: @white-color;
+        }
+        p {
+            margin: 5px 0;
+            text-align: center;
+        }
+    }
+    .r-table {
+    	width: @main-width - @main-l-nav-width - 20;
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+    	border-collapse: collapse;
+    	border: 1px solid #e6e6e6;
+    	font-size: 14px;
+    	line-height: 30px;
+    	td {
+    	    border: 1px solid #e6e6e6;
+    	    text-align: center;
+    	    vertical-align: middle;
+    	}
+    	th {
+    	    border: 1px solid #e6e6e6;
+    	    text-align: center;
+    	    vertical-align: middle; 
+    	    background-color: #ddd;
+    	}
+    	#table-h {
+    	    top: 0;
+    	    margin-left: -1;
+    	}
+    	.dark-r {
+    	    background-color: #efefef;	
+    	}
+    	button {
+    	    width: 50px;
+            border-radius: 5px;
+            border: 1px solid #e8e8e8;
+            background-color: #fff;
+            margin-left: 10px;
+            color: #808080;	
+    	}
+    }
+}
+
+.mask{
+    display: none; 
+    position: absolute;
+    .flex-display (row, center);
+    align-items: center;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    form {
+        width: 30%;
+        height: 30%;
+        .flex-display (column, space-around);
+        background-color: #fff;
+        opacity: 1;	
+        .form-content {
+            position: relative;	
+            input {
+                position: absolute;
+                left: 40%;
+                width: 200px; 	
+            }
+            span {
+                position: relative;
+                left: 100px;
+                &:nth-of-type(2) {
+                    display: inline-block;
+                    margin-top: 10px;	
+                }
+                :nth-of-type(3) {
+                    display: inline-block;
+                    margin-top: 10px;	
+                }
+            }
+        }
+    }
+}
+
+#delete-table,
+#edit-table {
+    display: none;
+}
+
+.mask > form > p {
+    left: 100px;
+}
+
+#newValue {
+    margin-top: 10px;
+}
+
+#newContent {
+    margin-top: 10px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.form-btn button {
+    width: 90px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #999;
+}
+
+.banber-l-icon {
+    .icon (78px, 260px, 0px, -9px);
+    background-position: 0 -9px;
+} 
