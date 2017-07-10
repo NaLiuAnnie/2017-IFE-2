@@ -8,18 +8,30 @@ var lNav = document.getElementsByClassName('l-nav')[0];
 var Rtable = document.getElementsByClassName("r-table")[0];
 var index;
 
+//确定点击的是删除还是编辑按钮
+function editRow() {
+    if(event.target.innerText == '编辑') {
+        editTable();
+    }else {
+        deleteTable();
+    }
+}
+
+//取消删除
 function cancleDelete() {
     document.getElementById('delete-table').style.display = 'none';
     event.preventDefault();
     document.body.style.overflow = 'scroll';
 }
 
+//取消编辑
 function cancleModify() {
     document.getElementById('edit-table').style.display = 'none';
     event.preventDefault();
     document.body.style.overflow = 'scroll';
 }
 
+//确认删除
 function conformDelete() {
     var currentTableData = JSON.parse(sessionStorage.tableData);
     currentTableData.splice(index,1); 
@@ -30,6 +42,7 @@ function conformDelete() {
     document.body.style.overflow = 'scroll';
 }
 
+//确认修改
 function conformModify() {
     var currentTableData = JSON.parse(sessionStorage.tableData);
     var dataId = document.getElementById('newName').value;
@@ -46,6 +59,7 @@ function conformModify() {
     document.body.style.overflow = 'scroll';
 }
 
+//点击编辑按钮触发此事件
 function editTable(){
     var parent = event.target.parentNode.parentNode;
     index = parent.getAttribute('data-index');
@@ -56,6 +70,7 @@ function editTable(){
     document.getElementById('newValue').value = parent.children[2].innerText;
 }
 
+//点击删除按钮触发此事件
 function deleteTable(){
     var parent = event.target.parentNode.parentNode;
     index = parent.getAttribute('data-index');
@@ -63,38 +78,42 @@ function deleteTable(){
     document.body.style.overflow = 'hidden';
 }
 
+//加载右侧表格
 function loadTable(data) {
-    Rtable.innerHTML = '<tr id=\"table-h\"><th>TableHead</th><th>TableHead</th><th>Head</th><th>TableHead</th></tr>'
+    Rtable.innerHTML = ''
+                     + '<tr id=\"table-h\">'
+                     +     '<th>TableHead</th>'
+                     +     '<th>TableHead</th>'
+                     +     '<th>Head</th>'
+                     +     '<th>TableHead</th>'
+                     + '</tr>'
     var tabLength = data.length;
     for(var i = 0; i < tabLength; i++) {
         var trNode = document.createElement('TR');
-        var tdIdNode = document.createElement('TD');
-        var idText = document.createTextNode(data[i].id);
-        tdIdNode.appendChild(idText);
-        trNode.appendChild(tdIdNode);
-        var tdNameNode = document.createElement('TD');
-        var nameText = document.createTextNode(data[i].name);
-        tdNameNode.appendChild(nameText);
-        trNode.appendChild(tdNameNode);
-        var tdContentNode = document.createElement('TD');
-        var contentText = document.createTextNode(data[i].content);
-        tdContentNode.appendChild(contentText);
-        trNode.appendChild(tdContentNode);
-        var tdValNode = document.createElement('TD');
-        tdValNode.innerHTML = '<td><button type=\"button\">' + data[i].value[0] + '</button><button type=\"button\">' +data[i].value[1] + '</button></td>'
-        tdValNode.children[0].addEventListener('click', editTable);
-        tdValNode.children[1].addEventListener('click', deleteTable);
-        trNode.appendChild(tdValNode);
+        trNode.innerHTML += ''
+                         +  '<td>' +  data[i].id + '</td>'
+                         +  '<td>' +  data[i].name + '</td>'
+                         +  '<td>' +  data[i].content + '</td>' 
+                         +  '<td>'
+                         +    '<button type=\"button\">'
+                         +    data[i].value[0]
+                         +    '</button>'
+                         +    '<button type=\"button\">'
+                         +    data[i].value[1]
+                         +    '</button>'
+                         +  '</td>'
+        trNode.addEventListener('click', editRow, false);
         if(i % 2 == 1) {
-            trNode.setAttribute('class', 'dark-r');
+            trNode.className = 'dark-r';
         }
         trNode.setAttribute('data-index', i);
         Rtable.appendChild(trNode);
     }
 }
 
+//点击左侧一级导航时展开二级导航
 function showSubNav(){
-    if(event.target.nextElementSibling != null && event.target.nextElementSibling.getAttribute('class') == 'l-l2-nav') {
+    if(event.target.nextElementSibling != null && event.target.nextElementSibling.tagName == 'DIV') {
         if(event.target.nextElementSibling.style.display == 'none') {
             event.target.nextElementSibling.style.display = 'block';   
         }else {
@@ -103,6 +122,7 @@ function showSubNav(){
     }
 }
 
+//加载左侧导航栏
 function loadTableNav(){
     var navLength = tableNavData.length;
     lNav.innerHTML = null;
@@ -111,7 +131,6 @@ function loadTableNav(){
             var pNode = document.createElement('P');
             var textNode = document.createTextNode(tableNavData[i]);
             pNode.appendChild(textNode);
-            pNode.addEventListener('click', showSubNav);
             pNode.setAttribute("class", "l-l1-nav");
             lNav.appendChild(pNode);
         }else if (typeof tableNavData[i] == 'object') {
@@ -127,10 +146,11 @@ function loadTableNav(){
             divNode.setAttribute('style', 'display: none');
             lNav.appendChild(divNode);
         }
+    lNav.addEventListener('click', showSubNav);
     }   
 }
 
-//When a box's position is changed to fixed, It's width will different from other, set it's width same to others.
+//设置表头的宽度与内容表格各单元宽度一致
 function setWidth() {
     if(document.getElementById("table-h")){
         for(var i = 0; i < document.getElementById("table-h").children.length; i++) {
@@ -139,6 +159,7 @@ function setWidth() {
     }
 }
 
+//当表格表头的Top超出浏览器时，出现固定在浏览器窗口顶部的表头
 function onScroll() {
     lNav.style.height = window.innerHeight - lNav.getBoundingClientRect().top + "px";
     if(Rtable.getBoundingClientRect().top < 0 && document.getElementById("table-h")) {
@@ -149,16 +170,17 @@ function onScroll() {
     }
 }
 
+//为元素添加事件监听，调用加载表格和侧边栏函数
 window.onload = function() {
     lNav.style.height = window.innerHeight - lNav.getBoundingClientRect().top + "px";
     setWidth();
-    document.body.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onScroll);
-    window.sessionStorage.setItem('tableData', JSON.stringify(tableData));
     loadTableNav();
     loadTable(tableData);
-    document.getElementById('conform-modify').addEventListener('click', conformModify);
-    document.getElementById('conform-delete').addEventListener('click', conformDelete);
-    document.getElementById('cancle-modify').addEventListener('click', cancleModify);
-    document.getElementById('cancle-delete').addEventListener('click', cancleDelete);
+    window.sessionStorage.setItem('tableData', JSON.stringify(tableData));
+    document.body.addEventListener("scroll", onScroll, false);
+    window.addEventListener("resize", onScroll, false);
+    document.getElementById('conform-modify').addEventListener('click', conformModify, false);
+    document.getElementById('conform-delete').addEventListener('click', conformDelete, false);
+    document.getElementById('cancle-modify').addEventListener('click', cancleModify, false);
+    document.getElementById('cancle-delete').addEventListener('click', cancleDelete, false);
 };
