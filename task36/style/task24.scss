@@ -1,0 +1,208 @@
+$header-height: 340px;
+$header-width: 100%;
+
+$nav-height: 80px;
+$nav-color: #000;
+$nav-r-width: 130px;
+$banner-color: #2d7079;
+
+$main-width: 960px;
+$main-l-width: 230px;
+$main-l-maxheight: 748px;
+$main-r-width: 710px;
+
+$white-chara: #fff;
+
+@mixin flex-display($direct, $justify) {
+  display: flex;
+  flex-flow: $direct;
+  justify-content: $justify;
+}
+
+@mixin icon($width, $height, $right, $top) {
+  display: inline-block;
+  background-image:url("../images/icon/png");
+  width: $width;
+  height: $height;
+  background-position: $right $top;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft Yahei";
+}
+
+header {
+  height: $header-height;
+  width: $header-width;
+}
+
+nav {
+  height: $nav-height;
+  width: 100%;
+  background-color: $nav-color;
+  @include flex-display(row, center);
+}
+
+.nav-content {
+  width: $main-width;
+  height: $nav-height;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 15px;
+}
+
+.nav-icon {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  @include icon(16px, 9px, 0, 0);
+}
+
+.nav-r {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $white-chara;
+  @include flex-display(row, space-around);
+  div {
+    width: $nav-r-width;
+    height: $nav-height;
+    position: relative;
+    p {
+      width: $nav-r-width;
+      height: $nav-height;
+      line-height: $nav-height;
+      text-align: center;
+    }
+    &:hover {
+      background-color: #333;
+      ul {
+        display: block;
+      }
+    }
+  }
+}
+
+.sub-nav {
+  list-style-type: none;
+  display: none;
+  li {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.banner {
+  width: $header-width;
+  height: $header-height - $nav-height;
+  display: flex;
+  background-color: $banner-color;
+}
+
+.banner-l {
+  width: $header-width / 2;
+  height: $header-height - $nav-height;
+  position: relative;
+}
+
+.banner-r {
+  width: $header-width / 2;
+  height: $header-height - $nav-height;
+}
+
+.banner-l-content {
+  width: $main-width / 2;
+  position: absolute;
+  right: 0;
+  @include flex-display(row, space-between);
+}
+
+.banber-l-icon {
+  @include icon(78px, 260px, 0, -9px);
+}
+
+.banner-l-p {
+  @include flex-display(column, center);  
+}
+
+.sm-p {
+  font-size: 32px;
+  opacity: .5;
+  color: $white-chara;
+}
+
+.bg-p {
+  font-size: 44px;
+  color: $white-chara;
+}
+
+main {
+  width: $main-width;
+  margin: 20px auto 20px auto;
+  @include flex-display(row, space-between);
+  position: relative;
+  color: #808080;
+}
+
+.l-nav {
+  width: $main-l-width;
+  max-height: $main-l-maxheight;
+  font-size: 14px;
+  overflow: scroll;
+  background-color: #eee;
+}
+
+.l-nav p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+.r-table {
+  width: $main-r-width;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-collapse: collapse;
+  border: 1px solid #e6e6e6;
+  font-size: 14px;
+  line-height: 30px;
+  button {
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    margin-left: 10px;
+    color: #808080; 
+  }
+}
+
+.r-table td,
+.r-table th{
+    border: 1px solid #e6e6e6;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-r {
+    width: $main-r-width;
+}
+
+#table-h {
+    top: 0;
+    margin-left: -1;
+}
+
+th {
+    background-color: #ddd;
+}
+
+.dark-r {
+    background-color: #efefef;
+}
