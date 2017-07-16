@@ -1,13 +1,15 @@
 pc-main-width = 800px
+pc-main-left-width = 517px
+pc-aside-width = 250px
 mobile-main-width = 450px
 
 pc-header-height = 183px
 pc-nav-height = 33px
+pc-footer-height = 100px
 
 mobile-header-height = 154px
 mobile-nav-height = 28px
-
-pc-aside-width = 250px
+mobile-menu-height = 56px
 
 pc-img-width = 200px
 mobile-img-width = 169px
@@ -27,6 +29,34 @@ header
     background-color #000
     width 100%
     color #fff
+main 
+    marging-top 15px
+    .main-top 
+        display-flex(row, space-between, center) 
+        margin-top 15px
+        img 
+            width 100%
+        .apron
+            position absolute
+            bottom 0
+            width 100%
+            height 50%
+            display-flex(row, center, center) 
+            background-color rgba(0, 0, 0, 0.5)
+            color #fff  
+            h3
+                font-size 1.7rem
+                margin-top auto
+            p 
+                font-size 1.2rem
+                margin-bottom auto
+    hr   
+        margin-top 17px
+        margin-bottom 17px
+    .main-bottom
+        
+    aside 
+        margin-top 15px
 
         
 @media screen and (min-width:960px)
@@ -36,7 +66,7 @@ header
             padding-left 17px
             padding-right 17px
             height pc-nav-height
-            display-flex(row, space-between)
+            display-flex(row, space-between, center)
         nav 
             display-flex(row, center, center)
             .nav-menu
@@ -44,6 +74,59 @@ header
         .banner 
             height pc-header-height - pc-nav-height
             width 100%
+    main 
+        display: grid;
+        grid-template-columns: 0.65fr 0.04fr 0.31fr;
+        .main-left
+            grid-column 1 / 2
+            .main-top
+                display: grid;
+                grid-template-columns: 1fr 8px 1fr 8px 1fr;
+                .abstract-1
+                    grid-column 1 / 2
+                    position relative
+                .abstract-2
+                    grid-column 3 / 4
+                    position relative
+                .abstract-3
+                    grid-column 5 / 6
+                    position relative
+        .main-bottom
+            display: grid;
+            grid-template-rows: 133px 20px 133px 20px 133px 30px;
+            article:nth-child(1)
+                grid-row 1 / 2
+            article:nth-child(2)
+                grid-row 3 /4
+            article:nth-child(3)
+                grid-row 5 / 6
+            article
+                img 
+                    float left
+                    margin-right 15px
+                section
+                    h3
+                        font-size 1.6rem
+                    p 
+                        font-size 1.3rem
+        aside 
+            grid-column 3 / 4
+            img 
+                width 100%
+                height 16.7%
+            h3
+                font-size 1.2rem
+            p 
+                font-size 1rem
+                color #666
+    footer 
+        background-color #666
+        font-size 1.1rem
+        text-align center
+        padding-top 10px
+        color #fff
+
+    
                
 
 @media screen and (max-width:959px)
@@ -54,6 +137,21 @@ header
             .LOGO
                 width 100%
                 text-align center
+            nav
+                height mobile-menu-height
+                width 100%
+                display-flex(row, space-around, center)
+                position fixed
+                bottom 0
+                color #000
+                text-transform capitalize
+                border 1px solid #bababa
+                background-color #eee
+
+        .banner
+            height mobile-header-height - mobile-nav-height
+            width 960px
+
                 
 
 
