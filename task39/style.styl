@@ -1,0 +1,59 @@
+pc-main-width = 800px
+mobile-main-width = 450px
+
+pc-header-height = 183px
+pc-nav-height = 33px
+
+mobile-header-height = 154px
+mobile-nav-height = 28px
+
+pc-aside-width = 250px
+
+pc-img-width = 200px
+mobile-img-width = 169px
+
+display-flex(dir = row, justify = center, align = center) 
+    display flex
+    flex-flow dir 
+    justify-content justify
+    align-items center
+
+*
+    padding 0px
+    margin 0px
+    font-family "Microsoft Yahei"
+
+header 
+    background-color #000
+    width 100%
+    color #fff
+
+        
+@media screen and (min-width:960px)
+    header
+        height pc-header-height
+        .header-nav
+            padding-left 17px
+            padding-right 17px
+            height pc-nav-height
+            display-flex(row, space-between)
+        nav 
+            display-flex(row, center, center)
+            .nav-menu
+                padding-left 14px 
+        .banner 
+            height pc-header-height - pc-nav-height
+            width 100%
+               
+
+@media screen and (max-width:959px)
+    header
+        height mobile-header-height
+        .header-nav
+            height mobile-nav-height
+            .LOGO
+                width 100%
+                text-align center
+                
+
+
