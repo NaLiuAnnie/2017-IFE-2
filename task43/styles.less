@@ -1,0 +1,102 @@
+@toolbar-height: 9.38vh;
+@border: 1px solid #979797;
+@backgroundColor: #d8d8d8;
+
+@bg-font-size: 4.02vh;
+@sm-font-size: 2.95vh;
+@md-font-size: 3.75vh;
+
+@btn-padding-top: 1.34vh;
+@btn-padding-left: 3.2vw;
+
+.icon-dispaly(@width, @height,@x: 0, @y: 0) {
+    display: inline-bolck;
+    background-image: src("images/icon.png");
+    background-position-x: @x;
+    background-position-y: @y;
+    width: @width;
+    height: @height;
+}
+
+.flex-display(@dir: row, @wrap: wrap, @justify: center, @align: center) {
+    display: flex;
+    flex-flow: @dir @wrap;
+    justify-content: @justify;
+    align-items: @align;
+} 
+
+.btn-padding(@left: 3.2vw, @top: 1.34vh) {
+    padding-left: @left;
+    padding-right: @left;
+    padding-top: @top;
+    padding-bottom: @top;
+}
+
+.btn-margin(@left: 3.2vw, @top: 1.34vh) {
+    margin-left: @left;
+    margin-right: @left;
+    margin-top: @top;
+    margin-bottom: @top;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft Yahei";
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    border: @border;
+}
+
+.top-menu,
+.bottom-menu {
+    .flex-display(row, wrap, space-between, center);  
+    font-size: @bg-font-size;
+    height: @toolbar-height;
+    width: 100%;
+    border: @border;
+    background-color: @backgroundColor;  
+}
+
+.add-btn {
+    text-decoration: none;
+    font-size: @sm-font-size;
+    border: @border;
+    display: inline-block;
+    .btn-padding;
+    margin-right: 2.4vw;
+}
+
+.add-btn:nth-of-type(1){
+    visibility: hidden;
+}
+
+.main {
+    box-sizing: border-box;
+    .btn-padding(2vw, 4.02vh);
+}
+
+.declare {
+    font-size: @md-font-size;
+}
+
+.onething {
+    .btn-margin;
+    border: @border;
+    font-size: @sm-font-size;
+    .btn-padding;
+}
+
+.col-doing {
+    .icon-dispaly(16px,17px,0,0);
+    margin-right: 4vw;
+}
+
+.bottom-menu {
+    position: absolute;
+    bottom: 0; 
+}
