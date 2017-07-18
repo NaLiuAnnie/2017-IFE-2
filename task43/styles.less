@@ -30,6 +30,13 @@
     padding-bottom: @top;
 }
 
+.btn-margin(@left: 3.2vw, @top: 1.34vh) {
+    margin-left: @left;
+    margin-right: @left;
+    margin-top: @top;
+    margin-bottom: @top;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -66,12 +73,14 @@ body {
     visibility: hidden;
 }
 
-// .main {
-//    .btn-padding; 
-// }
-
 .declare {
     font-size: @md-font-size;
+    margin-left: 2vw;
+}
+
+.onething {
+    .btn-margin;
+    border: @border;
 }
 
 .bottom-menu {
