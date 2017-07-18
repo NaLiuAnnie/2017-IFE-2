@@ -1,4 +1,34 @@
-@color: #4D926F;
+@toolbar-height: 9.38vh;
+@border: 1px solid #979797;
+@backgroundColor: #d8d8d8;
+@bg-font-size: 4.02vh;
+@sm-font-size: 2.95vh;
+@md-font-size: 3.75vh;
+
+.icon-dispaly(@x: 0, @y: 0) {
+    display: inline-bolck;
+    background-image: src("images/icon.png");
+    background-position-x: @x;
+    background-position-y: @y;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft Yahei";
+}
+
 body {
-    background-color: @color;
+    height: 100%;
+    width: 100%;
+    border: @border;
+}
+
+.top-menu {
+    font-size: @bg-font-size
+    height: @toolbar-height;
+    width: 100%;
+    font-size: 
+    border: @border;
+    background-color: @backgroundColor;  
 }
