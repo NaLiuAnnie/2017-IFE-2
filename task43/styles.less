@@ -9,13 +9,14 @@
 @btn-padding-top: 1.34vh;
 @btn-padding-left: 3.2vw;
 
-.icon-dispaly(@width, @height,@x: 0, @y: 0) {
-    display: inline-bolck;
-    background-image: url("images/icon.png");
-    background-position-x: @x;
-    background-position-y: @y;
-    width: @width;
-    height: @height;
+.col-doing() {
+    diaplay: inline-block;
+    width: 0;
+    height: 0;
+
+    border-width: 6vw 0px 6vw 4.29vh;
+    border-color: transparent red;
+    border-style: solid; 
 }
 
 .flex-display(@dir: row, @wrap: wrap, @justify: center, @align: center) {
