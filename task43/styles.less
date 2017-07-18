@@ -12,6 +12,13 @@
     background-position-y: @y;
 }
 
+.flex-display(@dir = row, @wrap = wrap, @justify = center, @align = center) {
+    display: flex;
+    flex-flow: @dir @wrap;
+    justify-content: @justify;
+    align-items: @align;
+} 
+
 * {
     padding: 0;
     margin: 0;
@@ -25,9 +32,14 @@ body {
 }
 
 .top-menu {
+    .flex-display(row, wrap, space-between, center);  
     font-size: @bg-font-size;
     height: @toolbar-height;
     width: 100%;
     border: @border;
     background-color: @backgroundColor;  
+}
+
+.add-btn:nth-of-type(1){
+    visibility: hidden;
 }
