@@ -19,9 +19,9 @@
     border-style: solid; 
 }
 
-.flex-display(@dir: row, @wrap: nowrap, @justify: center, @align: center) {
+.flex-display(@dir: row, @justify: center, @align: center) {
     display: flex;
-    flex-flow: @dir @wrap;
+    flex-direction: @dir;
     justify-content: @justify;
     align-items: @align;
 } 
@@ -55,12 +55,15 @@ body {
 
 .top-menu,
 .bottom-menu {
-    .flex-display(row, wrap, space-between, center);  
     font-size: @bg-font-size;
     height: @toolbar-height;
     width: 100%;
     border: @border;
     background-color: @backgroundColor;  
+}
+
+.top-menu {
+    .flex-display(row, space-between, center);  
 }
 
 .add-btn {
@@ -93,6 +96,10 @@ body {
     .flex-display; 
 }
 
+.onething p {
+    width: 82%;
+}
+
 .col-doing {
     .color-doing;
     margin-right: 4vw;
@@ -101,7 +108,7 @@ body {
 .bottom-menu {
     position: absolute;
     bottom: 0; 
-    .flex-display(row, nowrap, space-around,center);
+    .flex-display(row, space-around,center);
     font-size: @bg-font-size;
 }
 
