@@ -9,11 +9,13 @@
 @btn-padding-top: 1.34vh;
 @btn-padding-left: 3.2vw;
 
-.icon-dispaly(@x: 0, @y: 0) {
+.icon-dispaly(@width, @height,@x: 0, @y: 0) {
     display: inline-bolck;
     background-image: src("images/icon.png");
     background-position-x: @x;
     background-position-y: @y;
+    width: @width;
+    height: @heihgt;
 }
 
 .flex-display(@dir: row, @wrap: wrap, @justify: center, @align: center) {
@@ -85,10 +87,11 @@ body {
 .onething {
     .btn-margin;
     border: @border;
+    font-size: @sm-font-size;
 }
 
 .col-doing {
-    .icon-dispaly;
+    .icon-dispaly(16px, 17px,0, 0);
 }
 
 .bottom-menu {
