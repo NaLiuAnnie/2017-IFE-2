@@ -9,14 +9,14 @@
 @btn-padding-top: 1.34vh;
 @btn-padding-left: 3.2vw;
 
-.color-doing() {
+.doing-i() {
     diaplay: inline-block;
     width: 0;
     height: 0;
 
-    border-width: 6vw 0px 6vw 4.29vh;
-    border-color: transparent red;
+    border-width: 8vw 0px 8vw 8vw;
     border-style: solid; 
+    margin-right: 4vw;
 }
 
 .flex-display(@dir: row, @justify: center, @align: center) {
@@ -89,8 +89,9 @@ body {
     font-size: @md-font-size;
     div {
         .flex-display(row, center, center);
-        margin-left: 1.6vw;
-        margin-right: 1.6vw; 
+        .btn-padding;
+        margin-left: 0.8vw;
+        margin-right: 0.8vw; 
     }
     .pri-icon {
     display: inline-block;
@@ -107,6 +108,22 @@ body {
     .lo-pri-icon {
         background-color: #437414;
     } 
+}
+
+.status {
+    .top-bar;
+    background-color: #ecfeeb;
+    font-size: @md-font-size; 
+    div {
+        .flex-display(row, center, center);
+        .btn-padding;
+        margin-left: 0.8vw;
+        margin-right: 0.8vw; 
+    } 
+    .doing-icon {
+        .doing-i;
+        background-color: #979797;
+    }  
 }
 
 .main {
@@ -131,8 +148,8 @@ body {
 }
 
 .col-doing {
-    .color-doing;
-    margin-right: 4vw;
+    .doing-i;
+    border-color: transparent red;
 }
 
 .bottom-menu {
