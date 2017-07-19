@@ -43,3 +43,22 @@
     .flex-display(row, space-between, center);
     background-color: #d8d8d8; 
 }
+
+.toolbar {
+    height: @toolbar-height;
+    width: 100%;
+    border: @border; 
+    font-size: @sm-font-size;
+    .flex-display(row, space-around, center);   
+}
+
+.toolbar-item {
+    width: 27.125vw;
+    height: 7.277vh;
+    .flex-display(row, space-around, center);       
+}
+
+.priority {
+    .toolbar;
+    background-color: #feeaea;
+}
