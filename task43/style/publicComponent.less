@@ -1,0 +1,41 @@
+@import "icon.less";
+
+@toolbar-height: 9.433vh;
+@border: 1px solid #979797;
+
+@bg-font-size: 4.04vh;
+@sm-font-size: 2.15vh;
+@md-font-size: 2.96vh;
+
+.flex-display(@dir: row, @justify: center, @align: center) {
+    display: flex;
+    flex-direction: @dir;
+    justify-content: @justify;
+    align-items: @align;
+} 
+
+.btn-template {
+    text-decoration: none;
+    font-size: @sm-font-size;
+    border: @border;
+    display: inline-block;
+    .btn-padding;
+    margin-right: 2.4vw;
+    color: #000;    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+    box-sizing: border-box;
+}
+
+.title {
+    height: @toolbar-height;
+    width: 100%;
+    border: @border; 
+    font-size: @bg-font-size;
+    .flex-display(row, space-between, center);
+    background-color: #d8d8d8; 
+}
