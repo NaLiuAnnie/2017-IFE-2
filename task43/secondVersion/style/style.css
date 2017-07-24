@@ -245,8 +245,8 @@ main {
     left: 0;
     background-color: #d8d8d8;
     border: 1px solid #979797;
-    font-size: 2.15vh;
-    display: flex;
+    font-size: 2.96vh;
+    flex-flow: row;
     justify-content: space-around;
     align-items: center;
     display: none;
@@ -260,8 +260,7 @@ main {
     right: 0;
     background-color: #d8d8d8;
     border: 1px solid #979797;
-    font-size: 2.15vh;
-    display: flex;
+    font-size: 2.96vh;
     justify-content: space-around;
     align-items: center; 
     display: none;   
