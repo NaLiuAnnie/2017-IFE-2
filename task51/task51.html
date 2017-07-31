@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>task51</title>
+
+        <!-- Vue.js script source -->
+        <script src="https://unpkg.com/vue@2.4.2"></script>
+
+        <!-- jquery for Bootstrap -->
+        <script   
+            src="https://code.jquery.com/jquery-3.1.1.min.js"   
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
+            crossorigin="anonymous"></script>
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <style>
+            header {
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                width: 100%;
+                height: 9.433vh;
+                padding-left: 0.808vw;
+                padding-right: 0.808vw;
+                border: 1px solid #979797;
+                text-align: center;
+                font-size: 4.04vh;
+                background-color: #d8d8d8;
+            }
+            #onething-declare{
+                font-size: 2.96vh;
+            }
+            .task-item {
+                width: 95.951vw;
+                height: 18.059vh;
+                display: flex;
+                flex-flow: row;
+                justify-content: center;
+                align-items: center;
+                overflow-y: auto;
+                margin-bottom: 0.808vh;
+                position: relative;
+                border: 1px solid #979797;
+                font-size: 2.15vh;
+                padding: 2.156vh;
+            }
+            main {
+                padding: 0.808vh;
+            }
+            footer {
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-around;
+                align-items: center;
+                height: 9.433vh;
+                font-size: 2.96vh;
+                border: 1px solid #979797;
+                background-color: #d8d8d8;
+            }
+            .priority {
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 9.433vh;
+                padding-left: 0.808vh;
+                padding-right: 0.808vh;
+                border: 1px solid #979797;
+            }
+
+            .priority li {
+                display: inline-block;
+                list-style: none;
+                width: 27.125vw;
+                height: 7.277vh;
+            }
+
+            .priority li button {
+                display: flex;
+                flex-flow: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                font-size: 2.96vh;
+                background: none; 
+                border: none;
+                box-shadow: none;  
+            }
+
+             .priority li button i {
+                display: inline-block;
+                width: 5.390vh;
+                height: 5.390vh;
+                border-radius: 50%;
+                margin-right: 0.808vh;
+            } 
+            .status {
+                width: 100%;
+                height: 9.433vh;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 0.808vh;
+                padding-right: 0.808vh;
+                border: 1px solid #979797;
+            }
+
+            .status li {
+                list-style-type: none;
+                width: 27.125vw;
+                height: 7.277vh;
+            }
+
+            .status li button {
+                display: flex;
+                flex-flow: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                font-size: 2.96vh;
+                background: none;
+                border: none;
+            }
+
+            /* .status li button i {
+                margin-right: 0.808vh;    
+            } */
+            .statusPanel {
+                position: absolute;
+                height: 100%;
+                width: 80%;
+                top: 0;
+                left: 0;
+                background-color: #d8d8d8;
+                border: 1px solid #979797;
+                font-size: 2.96vh;
+                flex-flow: row;
+                justify-content: space-around;
+                align-items: center;
+                z-index: 999;
+            }
+
+            .editPanel {
+                position: absolute;
+                height: 100%;
+                width: 80%;
+                top: 0;
+                right: 0;
+                background-color: #d8d8d8;
+                border: 1px solid #979797;
+                font-size: 2.96vh;
+                justify-content: space-around;
+                align-items: center;  
+                z-index:999; 
+            }
+            .hi-pri-icon {
+                background-color: #ce0b24;
+            }
+
+            .mi-pri-icon {
+                background-color: #f7e63b;
+            }
+
+            .lo-pri-icon {
+                background-color: #437414;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <button class='btn1' v-on:click="btn1Event">{{ btn1Content }}</button> 
+                <p>Title</p>
+                <button class='btn2' v-on:click="btn2Event">{{ btn2Content }}</button> 
+            </header>
+            <p id="onething-declare" v-if="displayOneThingPanel">Now! The One Thing is</p>
+            <ul class="priority" v-bind:style="priorityBackgroundColor" v-if="displayPanel" v-on:click="selectPriority">
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <i class="hi-pri-icon"></i>
+                        高优
+                    </button>
+                </li>
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <i class="mi-pri-icon"></i>
+                        中优
+                    </button>
+                </li>
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <i class="lo-pri-icon"></i>
+                        低优
+                    </button>
+                </li>
+            </ul>
+            <ul class="status" v-bind:style="statusBackgroundColor" v-if="displayPanel" v-on:click="selectStatus">
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <span class="glyphicon glyphicon-play" style="color: #d2d2d2;font-size:5.390vh;"></span>
+                        进行中
+                    </button>
+                </li>
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <span class="glyphicon glyphicon-pause" style="color: #d2d2d2;font-size:5.390vh;"></span>
+                        待办
+                    </button>
+                </li>
+                <li>
+                    <button v-bind:style="buttonBorder">
+                        <span class="glyphicon glyphicon-stop" style="color: #d2d2d2;font-size:5.390vh;"></span>
+                        已完成
+                    </button>
+                </li>
+            </ul>
+            <ul class="tasklist" v-if="displayOneThingPanel">
+                <li class="task-item">
+                    <span class="glyphicon glyphicon-play" style="font-size:5.390vh;color: #ce0b24;"></span>
+                    <p>{{ selectOneThing }}</p>
+                </li>
+            </ul>
+            <ul class="tasklist" v-if="displayAllPanel">
+                <li class="task-item" v-for="task in tasks" v-on:touchstart="touchstartEvent" v-on:touchmove="touchmoveEvent(task)">
+                    <div class="statusPanel" v-bind:style="task.displayStatus" v-on:click="changeTaskStatus(task)">
+                        <p>已完成</p>
+                        <p>待办</p>
+                        <p>进行中</p>
+                    </div>
+                    <div class="editPanel" v-bind:style="task.displayEdit" v-on:click="editTask(task)">
+                        <p>编辑</p>
+                        <p>删除</p>
+                    </div>
+                    <span v-bind:class="setStatusIcon(task)" style="font-size:5.390vh;" v-bind:style="setPriorityIcon(task)"></span>
+                    <p> {{ task.content }}</p>
+                </li>
+            </ul>
+            <ul class="tasklist" v-if="displayAddPanel">
+                <li class="task-item" style="padding: 0;">
+                    <input type="text" placeholder="This is a new Task." style="height: 100%;width: 100%;" v-model="newContent">
+                </li>
+            </ul>
+            <ul class="tasklist" v-if="displayEditPanel">
+                <li class="task-item" style="padding: 0;">
+                    <input type="text" style="height: 100%;width: 100%;" v-model="editContent">
+                </li>
+            </ul>
+            <footer>
+                <p class="one-thing" v-on:click="selectOneThingPanel">OneThing</p>
+                <p class="all" v-on:click="selectAllPanel">All</p>
+            </footer>
+        </div>
+        <script>
+            var body = new Vue({
+                el: '#app',
+                data: {
+                    btn2Content: 'Add',
+                    btn1Content: '',
+                    priorityBackgroundColor: 'background-color: #feeaea',
+                    statusBackgroundColor: 'background-color: #ecfeeb',
+                    buttonBorder: '',
+                    displayOneThingPanel: true,
+                    displayPanel: false,
+                    displayAllPanel: false,
+                    displayAddPanel: false,
+                    displayEditPanel: false,
+                    newPripority: '',
+                    newStatus: '',
+                    newContent: '',
+                    startX: '',
+                    editContent: '',
+                    tasks: [{
+                        priority: 'high',
+                        status: 'doing',
+                        content: '红豆生南国，春来发几枝。愿君多采撷，此物最相思。',
+                        displayStatus: 'display: none',
+                        displayEdit: 'display: none',
+                        time: new Date()
+                    },{
+                        priority: 'middle',
+                        status: 'finish',
+                        content: '春江潮水连海平，海上明月共潮生。滟滟随波千万里，何处春江无月明！江流宛转绕芳甸，月照花林皆似霰；空里流霜不觉飞，汀上白沙看不见。江天一色无纤尘，皎皎空中孤月轮。江畔何人初见月？江月何年初照人？人生代代无穷已，江月年年只相似。不知江月待何人，但见长江送流水。白云一片去悠悠，青枫浦上不胜愁。谁家今夜扁舟子？何处相思明月楼？可怜楼上月徘徊，应照离人妆镜台。玉户帘中卷不去，捣衣砧上拂还来。此时相望不相闻，愿逐月华流照君。鸿雁长飞光不度，鱼龙潜跃水成文。昨夜闲潭梦落花，可怜春半不还家。江水流春去欲尽，江潭落月复西斜。斜月沉沉藏海雾，碣石潇湘无限路。不知乘月几人归，落月摇情满江树。',
+                        displayStatus: 'display: none',
+                        displayEdit: 'display: none',
+                        time: new Date()
+                    },{
+                        priority: 'low',
+                        status: 'upcoming',
+                        content: '瑶池阿母绮窗开，黄竹歌声动地哀。八骏日行三万里，穆王何事不重来。',
+                        displayStatus: 'display: none',
+                        displayEdit: 'display: none',
+                        time: new Date()
+                    }]
+                },
+                methods: {
+                    setStatusIcon: function (task) {
+                        if(task.status == 'doing') {
+                            return 'glyphicon glyphicon-play';
+                        }else if(task.status == 'finish') {
+                            return 'glyphicon glyphicon-stop';
+                        }else if(task.status == 'upcoming') {
+                            return 'glyphicon glyphicon-pause';
+                        }
+                    },
+                    setPriorityIcon: function (task) {
+                        if(task.priority == 'high') {
+                            return 'color: #ce0b24';
+                        }else if(task.priority == 'middle') {
+                            return 'color: #f7e63b';
+                        }else if(task.priority == 'low') {
+                            return 'color:#437414';
+                        }
+                    },
+                    btn2Event: function () {
+                        if(this.btn2Content == 'Add') {
+                            this.displayOneThingPanel = false;
+                            this.displayAllPanel = false;
+                            this.displayAddPanel = true;
+                            this.displayEditPanel = false;
+                            this.displayPanel = true;
+                            this.buttonBorder = 'border: 1px solid #979797';
+                            this.priorityBackgroundColor = '';
+                            this.statusBackgroundColor = '';
+                            this.btn2Content = 'Done';
+                            this.btn1Content = 'Cancel';
+                        }else if (this.btn2Content = 'Done') {
+                            if(this.newPripority == '高优') {
+                                this.newPripority = 'high';
+                            }else if(this.newPripority == '中优') {
+                                this.newPripority = 'middle';
+                            }else if(this.newPripority == '低优') {
+                                this.newPripority = 'low';
+                            }
+
+                            if(this.newStatus == '进行中') {
+                                this.newStatus = 'doing';
+                            }else if(this.newStatus == '待办') {
+                                this.newStatus = 'upcoming';
+                            }else if(this.newStatus == '已完成') {
+                                this.newStatus = 'finish';
+                            }
+                            this.tasks.push({
+                                priority: this.newPripority,
+                                status: this.newStatus,
+                                content: this.newContent,
+                                displayStatus: 'display: none',
+                                displayEdit: 'display: none',
+                                time: new Date()
+                            })
+                            this.displayOneThingPanel = false;
+                            this.displayAllPanel = true;
+                            this.displayAddPanel = false;
+                            this.displayEditPanel = false;
+                            this.displayPanel = true;
+                            this.buttonBorder = 'border: 1px solid #979797';
+                            this.priorityBackgroundColor = '';
+                            this.statusBackgroundColor = '';
+                            this.btn2Content = 'Done';
+                            this.btn1Content = '';
+
+                        }
+                    },
+                    btn1Event: function() {
+                        if(this.btn1Content == 'Cancel') {
+                            this.displayOneThingPanel = false;
+                            this.displayAllPanel = true;
+                            this.displayAddPanel = false;
+                            this.displayEditPanel = false;
+                            this.displayPanel = true;
+                            this.buttonBorder = '';
+                            this.priorityBackgroundColor = 'background-color: #feeaea';
+                            this.statusBackgroundColor = 'background-color: #ecfeeb';
+                            this.btn2Content = 'Add';
+                            this.btn1Content = ''; 
+                        }
+                    },
+                    selectPriority: function (event) {
+                        if(event.target.tagName == 'BUTTON') {
+                            event.target.parentNode.parentNode.children[0].children[0].style.border = '1px solid #979797';
+                            event.target.parentNode.parentNode.children[1].children[0].style.border = '1px solid #979797';
+                            event.target.parentNode.parentNode.children[2].children[0].style.border = '1px solid #979797';
+                            event.target.style.border = '2px solid red';
+                            this.newPripority = event.target.innerText;
+                        }
+                    },
+                    selectStatus: function (event) {
+                        if(event.target.tagName == 'BUTTON') {
+                            event.target.parentNode.parentNode.children[0].children[0].style.border = '1px solid #979797';
+                            event.target.parentNode.parentNode.children[1].children[0].style.border = '1px solid #979797';
+                            event.target.parentNode.parentNode.children[2].children[0].style.border = '1px solid #979797';
+                            event.target.style.border = '2px solid red';
+                            this.newStatus = event.target.innerText;
+                        }                        
+                    },
+                    selectOneThingPanel: function () {
+                        this.displayOneThingPanel = true;
+                        this.displayAllPanel = false;
+                        this.displayAddPanel = false;
+                        this.displayEditPanel = false;
+                        this.displayPanel = false;
+                        this.btn2Content = 'Add';
+                        this.btn1Content = ''; 
+                    },
+                    selectAllPanel: function() {
+                        this.displayOneThingPanel = false;
+                        this.displayAllPanel = true;
+                        this.displayAddPanel = false;
+                        this.displayEditPanel = false;
+                        this.displayPanel = true;
+                        this.buttonBorder = '';
+                        this.priorityBackgroundColor = 'background-color: #feeaea';
+                        this.statusBackgroundColor = 'background-color: #ecfeeb';
+                        this.btn2Content = 'Add';
+                        this.btn1Content = '';     
+                    },
+                    touchstartEvent: function(task) {
+                        event.preventDefault();
+                        this.startX = event.changedTouches[0].pageX;
+                    },
+                    touchmoveEvent: function(task) {
+                        event.preventDefault();
+                        var moveEndX = event.changedTouches[0].pageX;
+                        var x = moveEndX - this.startX;
+                        if(x > 0) {
+                            this.tasks[this.tasks.indexOf(task)].displayStatus = 'display: flex';
+                        }else {
+                            this.tasks[this.tasks.indexOf(task)].displayEdit = 'display: flex';
+                        }
+                    },
+                    editTask: function(task) {
+                        if(event.target.innerText == '编辑') {
+                            this.displayOneThingPanel = false;
+                            this.displayAllPanel = false;
+                            this.displayAddPanel = false;
+                            this.displayEditPanel = true;
+                            this.displayPanel = true;
+                            this.buttonBorder = '';
+                            this.priorityBackgroundColor = 'background-color: #feeaea';
+                            this.statusBackgroundColor = 'background-color: #ecfeeb';
+                            this.btn2Content = 'DONE';
+                            this.btn1Content = 'Cancel';
+                            this.editContent = task.content;   
+                        }else {
+                            this.tasks.splice(this.tasks.indexOf(task), 1);
+                        }
+                    },
+                    changeTaskStatus: function(task) {
+                        if(event.target.innerText == '已完成') {
+                            this.tasks[this.tasks.indexOf(task)].status = 'finish';
+                        }else if (event.target.innerText == '待办') {
+                            this.tasks[this.tasks.indexOf(task)].status = 'upcoming';
+                        }else if (event.target.innerText == '进行中') {
+                            this.tasks[this.task.indexOf(task)].status = 'doing';
+                        }
+                        this.tasks[this.tasks.indexOf(task)].displayStatus = 'display: none';
+                    },
+                },
+                computed: {
+                    selectOneThing: function () {
+                        var oneThingTask = '';
+                        for(var i = 0; i < this.tasks.length; i++) {
+                            if(this.tasks[i].priority == 'high' && this.tasks[i].status == 'doing') {
+                                oneThingTask = this.tasks[i];
+                            }
+                        }
+                        for(var j = 0; j < this.tasks.length; j++) {
+                            if(this.tasks[j].priority == 'high' && this.tasks[j].status == 'doing' && this.tasks[j].time < oneThingTask.time) {
+                                oneThingTask = this.tasks[i];
+                            }
+                        }
+                        if(oneThingTask != '') {
+                           return oneThingTask.content; 
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
