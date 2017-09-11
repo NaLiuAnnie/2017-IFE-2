@@ -16,7 +16,7 @@
   <p id="result"></p>
 
   <script>
-//	import makeFactorial from 'wasm/factorial';
+	import makeFactorial from 'wasm/factorial';
 	makeFactorial().then(instance => {
 	  // What is with the weird exports._Z4facti function?
 	  // This is how the function name is encoded by the C++ to wasm compiler
