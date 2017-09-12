@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Matrix Example</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <script src="../loader.js"></script>
+  <script src="./helper.js"></script>
+
+  <style>
+  table{border-collapse:collapse;}
+  th, td { padding: 6px 18px; border: 1px solid #CCC; }
+  </style>
+</head>
+
+<body>
+  <h1>Matrix</h1>
+  <div id="output">Running test...</div>
+
+  <script>
+    // const output = document.getElementById('output')
+
+    const result = []
+    function startTest (fn) {
+      return loadJS('./matrix.src.js')
+        .then(instance => {
+          return fn('javascript', instance)
+        })
+        .then(instance => {
+          return loadWebAssembly('./matrix.wasm').then(ins => fn('WebAssembly', ins))
+        })
+        .then(() => {
+          result.forEach(group => {
+            group.Ratio = group['javascript'] / group['WebAssembly']
+          })
+          output.innerHTML = ''
+          output.appendChild(createTable(result))
+        })
+    }
+
+    startTest((type, instance) => {
+      const start = instance.exports.start || instance.exports._start
+
+      const counts = [
+        10000, 20000, 30000, 50000, 80000,
+        100000, 200000, 300000, 500000, 800000
+      ];
+
+      for (let i = 0; i < counts.length; ++i) {
+
+        const beg = performance.now()
+        for (let j = 0; j < counts[i]; ++j) {
+          start();
+        }
+        const end = performance.now()
+
+        if (!result[i]) {
+          result[i] = { n: counts[i] }
+        }
+        result[i][type] = end - beg
+      }
+
+      return instance
+    })
+  </script>
+</body>
+</html>

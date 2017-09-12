@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Preformance Test</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <script src="../loader.js"></script>
+</head>
+
+<body>
+  <h1>Preformance Test</h1>
+  <div id="output">Running test ...</div>
+
+  <script>
+
+    loadWebAssembly('./nbody.wasm').then(instance => {
+      const start = instance.exports._start
+      const run = instance.exports._run
+
+
+      const beg = performance.now()
+      start()
+      run(20000000)
+      const end = performance.now()
+
+      output.innerHTML = `Cost ${end-beg} ms`;
+    })
+  </script>
+</body>
+</html>
