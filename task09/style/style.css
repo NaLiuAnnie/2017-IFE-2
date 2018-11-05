@@ -1,0 +1,104 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+[class^='container'] {
+  background-color: #f0f0f0;
+  border: 2px solid #888;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+}
+.container1 {
+  flex-flow: column;
+}
+.container2 {
+  flex-flow: row;
+}
+.container3 {
+  flex-flow: row;
+  justify-content: space-between;
+}
+.alignLayout {
+  display: flex;
+  flex-flow: column;
+}
+[class^='alignRow'] {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 10px;
+}
+.square {
+  height: 100px;
+  width: 100px;
+  background-color: #c0c0c0;
+  border: 2px solid #888;
+}
+.alignRow1 .square {
+  margin-right: 10px;
+}
+.alignRow2 .square {
+  margin-left: 10px;
+}
+.alignLayout .alignRow1 {
+  justify-content: flex-start;
+}
+.alignLayout .alignRow2 {
+  justify-content: flex-end;
+}
+.Grid {
+  display: flex;
+  flex-flow: column;
+  margin-top: 20px;
+}
+.Grid-row {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 10px;
+}
+.Grid-cell {
+  height: 100px;
+  background-color: #c0c0c0;
+  border: 2px solid #888;
+  flex: 1;
+}
+.Grid-cell:nth-of-type(2), .Grid-cell:nth-of-type(3), .Grid-cell:nth-of-type(4) {
+  margin-left: 10px;
+}
+.HolyGrid {
+  height: 300px;
+  display: flex;
+  flex-flow: column;
+}
+.header, .footer {
+  background-color: #c0c0c0;
+  border: 2px solid #888;
+  height: 50px;
+}
+.content {
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+  margin: 10px 0px;
+}
+.left, .right, .center {
+  background-color: #c0c0c0;
+  border: 2px solid #888;
+}
+.left, .right {
+  flex: 0 0 80px;
+}
+.center {
+  flex: 1;
+}
+.center, .right {
+  margin-left: 10px;
+}
+.container2 img {
+  width: 100px;
+  height: 100px;
+  flex: none;
+}
+.container2 p {
+  margin-left: 10px;
+}
